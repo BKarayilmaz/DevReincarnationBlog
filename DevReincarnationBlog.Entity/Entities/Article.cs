@@ -2,7 +2,7 @@
 
 namespace DevReincarnationBlog.Entity.Entities
 {
-    public class Article:EntityBase,IEntityBase
+    public class Article: EntityBase
     {
         public string Title { get; set; }
         public string Content { get; set; }
