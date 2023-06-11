@@ -29,7 +29,7 @@ namespace DevReincarnationBlog.Data.Mappings
                 CreatedBy = "Admin Test",
                 CreatedDate = DateTime.Now,
                 CategoryId= Guid.Parse("044B2971-89A5-4596-8DA3-87BCA0C4A7B2"),
-                ImageId= Guid.Parse("558C3495 - E0BB - 4824 - BCBF - A48B08263CFE"),
+                ImageId= Guid.Parse("558C3495-E0BB-4824-BCBF-A48B08263CFE"),
                 IsDeleted = false
             });
         }

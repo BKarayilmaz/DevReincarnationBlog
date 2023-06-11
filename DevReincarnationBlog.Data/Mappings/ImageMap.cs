@@ -24,7 +24,7 @@ namespace DevReincarnationBlog.Data.Mappings
             },
             new Image
             {
-                    Id = Guid.Parse("558C3495 - E0BB - 4824 - BCBF - A48B08263CFE"),
+                    Id = Guid.Parse("558C3495-E0BB-4824-BCBF-A48B08263CFE"),
                     FileName = "images/testimage2",
                     FileType = "jpg",
                     CreatedDate = DateTime.Now,
