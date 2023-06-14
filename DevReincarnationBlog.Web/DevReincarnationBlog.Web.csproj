@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DevReincarnationBlog.Data\DevReincarnationBlog.Data.csproj" />
+    <ProjectReference Include="..\DevReincarnationBlog.Service\DevReincarnationBlog.Service.csproj" />
   </ItemGroup>
 
 </Project>

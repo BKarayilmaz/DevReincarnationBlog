@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DevReincarnationBlog.Data\DevReincarnationBlog.Data.csproj" />
+    <ProjectReference Include="..\DevReincarnationBlog.Entity\DevReincarnationBlog.Entity.csproj" />
+  </ItemGroup>
+
 </Project>

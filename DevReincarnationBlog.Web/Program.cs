@@ -1,10 +1,12 @@
     using DevReincarnationBlog.Data.Context;
 using DevReincarnationBlog.Data.Extensions;
+using DevReincarnationBlog.Service.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.LoadDataLayerExtensions(builder.Configuration);
+builder.Services.LoadServiceLayerExtensions();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
