@@ -1,4 +1,5 @@
-﻿using DevReincarnationBlog.Entity.Entities;
+﻿using DevReincarnationBlog.Entity.DTOs.Articles;
+using DevReincarnationBlog.Entity.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace DevReincarnationBlog.Service.Services.Abstractions
 {
     public interface IArticleService
     {
-        Task<List<Article>> GetAllArticlesAsync();
+        Task<List<ArticleDto>> GetAllArticlesAsync();
     }
 }
