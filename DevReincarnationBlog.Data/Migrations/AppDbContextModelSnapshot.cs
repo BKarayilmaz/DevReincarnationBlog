@@ -53,21 +53,21 @@ namespace DevReincarnationBlog.Data.Migrations
                         new
                         {
                             Id = new Guid("3e48d1bc-5f79-41cd-8a9a-532140199f99"),
-                            ConcurrencyStamp = "8c8fa83e-67c9-4503-8d6c-c3cfbc44b793",
+                            ConcurrencyStamp = "cdd4d250-9cf6-47a7-b25d-2a6179317fdf",
                             Name = "Superadmin",
                             NormalizedName = "SUPERADMIN"
                         },
                         new
                         {
                             Id = new Guid("989c2c1f-8ff7-4a22-925b-72275757a07d"),
-                            ConcurrencyStamp = "aa06baa5-664a-4782-8b1a-f0718fb49fed",
+                            ConcurrencyStamp = "7466b460-f13b-4e26-a07c-080cba52ca20",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = new Guid("085d51b8-8e2b-4fe4-8d27-48c4cbeb656e"),
-                            ConcurrencyStamp = "2aa0fea7-16d3-4aec-8d65-f9ccd98e547d",
+                            ConcurrencyStamp = "9449bb60-9157-4fd7-a98f-a47b9c59ec76",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -121,6 +121,9 @@ namespace DevReincarnationBlog.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("ImageId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -160,6 +163,8 @@ namespace DevReincarnationBlog.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ImageId");
+
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -175,18 +180,19 @@ namespace DevReincarnationBlog.Data.Migrations
                         {
                             Id = new Guid("c871ce76-cfac-45ea-b95c-a7dec9ef236a"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "82b53401-632c-4fb2-ac9a-a2b204af58ee",
+                            ConcurrencyStamp = "2d66baee-cdd4-4a8b-b9af-a4be7172391b",
                             Email = "superadmin@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Ergun",
+                            ImageId = new Guid("b8a7bb31-7655-47eb-9d59-72c0be1c8c06"),
                             LastName = "Yurdakul",
                             LockoutEnabled = false,
                             NormalizedEmail = "SUPERADMIN@GMAIL.COM",
                             NormalizedUserName = "SUPERADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAENoQzKUjFfaTquWE+WR+7SgqshxYavajkcGqRhk9XkUXQOv2JUfPvw1PHvuBcOHubQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFKvDUQZaFyJ0K3FXSc3N9HeL3T7i3PkkSvn/+wcW9rPSIW5VxcNfSHohLmu0Wwl5A==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "45dcc99b-3283-4345-8e6c-ecfe19364dc5",
+                            SecurityStamp = "962dc835-0986-4896-a86d-5fbc7d8fa587",
                             TwoFactorEnabled = false,
                             UserName = "superadmin@gmail.com"
                         },
@@ -194,18 +200,19 @@ namespace DevReincarnationBlog.Data.Migrations
                         {
                             Id = new Guid("1427b0e0-6e51-43e1-ad3e-040256330040"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7444d0a8-a60f-45a5-ac3f-012941ffcb1c",
+                            ConcurrencyStamp = "c7be2fe2-ca46-45f4-bf74-00280480c1b3",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Samiö",
+                            ImageId = new Guid("b8a7bb31-7655-47eb-9d59-72c0be1c8c06"),
                             LastName = "Bayraktar",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEK/VB3KLfxCnU1G7X4N+Q460GMeMTc0wDpBLuqJZt2V2umsu0U8LifApWwLQ5x9RvQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMCu0E3de7Rjvkp0iKUAtehkxLusC62+Cd2KhmQFTYkwd85WL/i316LqVOdzeNApWA==",
                             PhoneNumber = "1234567899",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e2e6ea1a-d619-460d-abca-f9e173536718",
+                            SecurityStamp = "c33dd9f8-21dd-4b44-a9e4-58abf4dba063",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -330,7 +337,7 @@ namespace DevReincarnationBlog.Data.Migrations
                     b.Property<DateTime?>("DeletedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("ImageId")
+                    b.Property<Guid?>("ImageId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsDeleted")
@@ -346,6 +353,9 @@ namespace DevReincarnationBlog.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<int>("ViewCount")
                         .HasColumnType("int");
 
@@ -355,31 +365,35 @@ namespace DevReincarnationBlog.Data.Migrations
 
                     b.HasIndex("ImageId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Articles");
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e0c7c25e-7030-427e-9c54-599ddd37193a"),
+                            Id = new Guid("56535e16-751a-47dd-ad6d-efad1c42aa5e"),
                             CategoryId = new Guid("00b6575f-5640-4080-9dd3-7fe43b04f1e1"),
                             Content = "Yapay Zeka (YZ) teknolojisi, son yıllarda hızla gelişerek hayatımızın birçok alanında kendine yer edinmiştir. Ancak, YZ'nin geleceği konusunda daha heyecan verici yenilikler beklemekteyiz. Gelecekteki potansiyeli nedeniyle YZ, insanlığın önünde inanılmaz fırsatlar sunacak ve dünyayı baştan aşağı değiştirecektir.\r\n\r\nİlk olarak, YZ'nin sağlık alanında devrim yaratacağına şüphe yok. YZ destekli tanı sistemleri, tıbbi verilerin analizi ve hastalıkların erken teşhisi gibi alanlarda önemli bir rol oynayacaktır. Bu, hastaların daha iyi tedavi edilmesini ve hastalıkların önlenmesini sağlayarak sağlık hizmetlerini iyileştirecektir. YZ, karmaşık cerrahi işlemlerde de cerrahların yanında yer alacak ve bu alanda daha güvenli ve etkili müdahalelerin gerçekleştirilmesine yardımcı olacaktır.\r\n\r\nYZ'nin başka bir alanı ise ulaşım olacaktır. Otonom araçlar, trafik akışını optimize ederek trafik kazalarını ve gecikmeleri azaltacak. Ayrıca, YZ destekli lojistik sistemleri, mal taşımacılığında daha etkin ve verimli bir şekilde çalışacak ve tedarik zincirinin iyileştirilmesine katkı sağlayacaktır.\r\n\r\nEğitim sektöründe de YZ, büyük bir devrim yapacak. Öğrencilere özel eğitim programları sunarak bireyselleştirilmiş öğrenme deneyimleri sunacak ve eğitimde eşitsizlikleri azaltacak. Ayrıca, öğretmenlerin iş yükünü hafifletecek ve onlara daha fazla öğrenciye odaklanma imkanı verecektir. YZ destekli sanal gerçeklik ve artırılmış gerçeklik uygulamalarıyla da öğrenme deneyimleri daha etkileyici hale gelecektir.\r\n\r\nSon olarak, YZ'nin iş dünyasına etkisi de dikkate değerdir. YZ destekli otomasyon sistemleri, üretim süreçlerini optimize edecek ve verimliliği artıracaktır. Ayrıca, YZ'nin doğal dil işleme ve müşteri hizmetleri alanındaki ilerlemeleri, müşteri deneyimini daha kişiselleştirilmiş hale getirecektir.",
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 6, 19, 13, 52, 2, 837, DateTimeKind.Local).AddTicks(3934),
+                            CreatedDate = new DateTime(2023, 6, 20, 12, 23, 57, 333, DateTimeKind.Local).AddTicks(137),
                             ImageId = new Guid("b8a7bb31-7655-47eb-9d59-72c0be1c8c06"),
                             IsDeleted = false,
                             Title = "Yapay Zekanın Geleceği: İnsanlık İçin Aydınlık Bir Yolculuk",
+                            UserId = new Guid("c871ce76-cfac-45ea-b95c-a7dec9ef236a"),
                             ViewCount = 15
                         },
                         new
                         {
-                            Id = new Guid("11cb43a9-86c4-4b5c-99e4-acd4b4fee606"),
+                            Id = new Guid("7348d65e-7381-4791-8147-21856b4562bb"),
                             CategoryId = new Guid("044b2971-89a5-4596-8da3-87bca0c4a7b2"),
                             Content = "Sanal Gerçeklik (VR) teknolojisi, günümüzdeki en heyecan verici yeniliklerden biridir. VR gözlükleri, kullanıcıları gerçek dünyadan koparıp sanal bir ortama taşıyarak tamamen yeni bir deneyim sunmaktadır. Bu inanılmaz teknoloji, eğlence sektöründen eğitim ve sağlık gibi birçok alanda çığır açmaktadır. VR gözlüklerinin geleceği ise oldukça parlak ve hayal gücümüzün sınırlarını zorlayacak.\r\n\r\nİlk olarak, eğlence sektöründe VR gözlükleri müthiş bir etki yaratmaktadır. Oyun endüstrisi, VR teknolojisi sayesinde kullanıcıları oyunların içine doğrudan yerleştirebilmekte ve daha önce hiç yaşanmamış deneyimler sunmaktadır. Gerçekçi grafikler, üç boyutlu ses efektleri ve hareket kontrolü gibi özellikler, oyuncuların oyun dünyasında tam anlamıyla kaybolmalarını sağlamaktadır. Ayrıca, VR gözlükleri sinema sektöründe de büyük bir potansiyele sahiptir. Sanal sinema deneyimi, seyircilere filmleri daha etkileyici bir şekilde deneyimleme imkanı sunacak ve izleyiciyi olayların tam merkezine yerleştirecektir.\r\n\r\nEğitim alanında VR gözlükleri, öğrenmeyi daha etkili ve eğlenceli hale getirecektir. Sanal sınıflar, öğrencilerin coğrafyayı keşfetmesine, tarihî olayları yeniden yaşamasına veya karmaşık kavramları görsel olarak anlamasına olanak tanıyacaktır. Bu, öğrencilerin daha derin bir anlayış geliştirmelerini ve daha aktif bir şekilde öğrenmelerini sağlayacaktır.\r\n\r\nSağlık alanında VR, terapi ve rehabilitasyon süreçlerinde büyük bir rol oynamaktadır. Örneğin, sanal gerçeklik tedavisi, korku veya anksiyete gibi psikolojik sorunlarla mücadelede etkili bir yöntemdir. Ayrıca, cerrahi eğitimlerde ve acil durum senaryolarında pratik yapma imkanı sunarak sağlık çalışanlarının becerilerini geliştirmelerine yardımcı olmaktadır.\r\n\r\nVR gözlükleriyle ilgili en heyecan verici şey ise potansiyelidir. Gelecekte, VR gözlüklerinin daha hafif, daha ergonomik ve daha gerçekçi hale gelmesi beklenmektedir. Ayrıca, artırılmış gerçeklik (AR) ve sanal gerçeklik (VR) teknolojilerinin birleştirilmesiyle daha etkileyici ve etkileşimli deneyimlerin ortaya çıkması muhtemeldir.\r\n\r\nSanal Gerçeklik Gözlükleri, gelecekte hayatımızı büyük ölçüde etkileyecek bir teknolojidir. Eğlence, eğitim, sağlık ve daha birçok alanda kullanılmaya devam edecek olan VR gözlükleri, insan deneyimini tamamen dönüştürerek bizi yeni dünyalara taşıyacaktır.",
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 6, 19, 13, 52, 2, 837, DateTimeKind.Local).AddTicks(3946),
+                            CreatedDate = new DateTime(2023, 6, 20, 12, 23, 57, 333, DateTimeKind.Local).AddTicks(151),
                             ImageId = new Guid("558c3495-e0bb-4824-bcbf-a48b08263cfe"),
                             IsDeleted = false,
                             Title = "Sanal Gerçeklik Gözlükleri: Hayal Dünyasına Kapı Aralanıyor",
+                            UserId = new Guid("1427b0e0-6e51-43e1-ad3e-040256330040"),
                             ViewCount = 38
                         });
                 });
@@ -425,7 +439,7 @@ namespace DevReincarnationBlog.Data.Migrations
                         {
                             Id = new Guid("00b6575f-5640-4080-9dd3-7fe43b04f1e1"),
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 6, 19, 13, 52, 2, 837, DateTimeKind.Local).AddTicks(4097),
+                            CreatedDate = new DateTime(2023, 6, 20, 12, 23, 57, 333, DateTimeKind.Local).AddTicks(281),
                             IsDeleted = false,
                             Name = "Yapay Zeka"
                         },
@@ -433,7 +447,7 @@ namespace DevReincarnationBlog.Data.Migrations
                         {
                             Id = new Guid("044b2971-89a5-4596-8da3-87bca0c4a7b2"),
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 6, 19, 13, 52, 2, 837, DateTimeKind.Local).AddTicks(4101),
+                            CreatedDate = new DateTime(2023, 6, 20, 12, 23, 57, 333, DateTimeKind.Local).AddTicks(283),
                             IsDeleted = false,
                             Name = "VR ve Ar Teknolojileri"
                         });
@@ -484,7 +498,7 @@ namespace DevReincarnationBlog.Data.Migrations
                         {
                             Id = new Guid("b8a7bb31-7655-47eb-9d59-72c0be1c8c06"),
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 6, 19, 13, 52, 2, 837, DateTimeKind.Local).AddTicks(4162),
+                            CreatedDate = new DateTime(2023, 6, 20, 12, 23, 57, 333, DateTimeKind.Local).AddTicks(359),
                             FileName = "images/testimage",
                             FileType = "jpg",
                             IsDeleted = false
@@ -493,7 +507,7 @@ namespace DevReincarnationBlog.Data.Migrations
                         {
                             Id = new Guid("558c3495-e0bb-4824-bcbf-a48b08263cfe"),
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 6, 19, 13, 52, 2, 837, DateTimeKind.Local).AddTicks(4165),
+                            CreatedDate = new DateTime(2023, 6, 20, 12, 23, 57, 333, DateTimeKind.Local).AddTicks(362),
                             FileName = "images/testimage2",
                             FileType = "jpg",
                             IsDeleted = false
@@ -507,6 +521,17 @@ namespace DevReincarnationBlog.Data.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("DevReincarnationBlog.Entity.Entities.AppUser", b =>
+                {
+                    b.HasOne("DevReincarnationBlog.Entity.Entities.Image", "Image")
+                        .WithMany("Users")
+                        .HasForeignKey("ImageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Image");
                 });
 
             modelBuilder.Entity("DevReincarnationBlog.Entity.Entities.AppUserClaim", b =>
@@ -561,13 +586,24 @@ namespace DevReincarnationBlog.Data.Migrations
 
                     b.HasOne("DevReincarnationBlog.Entity.Entities.Image", "Image")
                         .WithMany("Articles")
-                        .HasForeignKey("ImageId")
+                        .HasForeignKey("ImageId");
+
+                    b.HasOne("DevReincarnationBlog.Entity.Entities.AppUser", "User")
+                        .WithMany("Articles")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Category");
 
                     b.Navigation("Image");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("DevReincarnationBlog.Entity.Entities.AppUser", b =>
+                {
+                    b.Navigation("Articles");
                 });
 
             modelBuilder.Entity("DevReincarnationBlog.Entity.Entities.Category", b =>
@@ -578,6 +614,8 @@ namespace DevReincarnationBlog.Data.Migrations
             modelBuilder.Entity("DevReincarnationBlog.Entity.Entities.Image", b =>
                 {
                     b.Navigation("Articles");
+
+                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }

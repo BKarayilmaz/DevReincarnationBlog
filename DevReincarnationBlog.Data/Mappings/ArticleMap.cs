@@ -18,7 +18,8 @@ namespace DevReincarnationBlog.Data.Mappings
                 CreatedDate= DateTime.Now,                
                 CategoryId= Guid.Parse("00B6575F-5640-4080-9DD3-7FE43B04F1E1"),
                 ImageId= Guid.Parse("B8A7BB31-7655-47EB-9D59-72C0BE1C8C06"),
-                IsDeleted =false
+                IsDeleted =false,
+                UserId= Guid.Parse("C871CE76-CFAC-45EA-B95C-A7DEC9EF236A")
             },
             new Article
             {
@@ -30,7 +31,8 @@ namespace DevReincarnationBlog.Data.Mappings
                 CreatedDate = DateTime.Now,
                 CategoryId= Guid.Parse("044B2971-89A5-4596-8DA3-87BCA0C4A7B2"),
                 ImageId= Guid.Parse("558C3495-E0BB-4824-BCBF-A48B08263CFE"),
-                IsDeleted = false
+                IsDeleted = false,
+                UserId= Guid.Parse("1427B0E0-6E51-43E1-AD3E-040256330040")
             });
         }
     }
